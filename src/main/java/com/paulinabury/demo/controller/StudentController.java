@@ -26,8 +26,10 @@ public class StudentController {
     public ResponseEntity<?> getStudentById(@PathVariable Long id) {
         Student student = studentService.getStudentById(id);
         if (Objects.nonNull(student)) {
+            log.info("Successfully searched student by id");
             return ResponseEntity.ok(student);
         } else {
+            log.info("404 not found");
             return ResponseEntity.notFound().build();
         }
     }
@@ -35,6 +37,7 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
+        log.info("Successfully searched all students");
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
@@ -42,8 +45,10 @@ public class StudentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
         if (studentService.deleteStudentById(id)) {
+            log.info("Successfully deleted student by id");
             return ResponseEntity.accepted().build();
         } else {
+            log.info("Not found");
             return ResponseEntity.badRequest().build();
         }
     }
@@ -51,6 +56,7 @@ public class StudentController {
 
     @PostMapping(path = "/batch")
     public ResponseEntity<?> addStudent(@RequestBody List<Student> students) {
+        log.info("Successfully added all students");
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(studentService.addBatchOfStudents(students));
     }
@@ -58,6 +64,7 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<?> addStudent(@RequestBody Student student) {
+        log.info("Successfully added one student");
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(studentService.addStudent(student));
     }
@@ -65,6 +72,7 @@ public class StudentController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<?> updateStudentById(@PathVariable Long id, @RequestBody Student student) {
+        log.info("Successfully updated student's data");
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(studentService.updateStudentById(id, student));
     }
