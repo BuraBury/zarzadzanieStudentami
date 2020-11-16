@@ -28,6 +28,7 @@ public class FileController {
     @GetMapping
     public ResponseEntity<?> saveToFile() {
         List<Student> students = studentService.getAllStudents();
+        log.info("Saved to txt file");
         return ResponseEntity.ok(fileService.saveToFile(students, new File("students.txt")));
     }
 }
