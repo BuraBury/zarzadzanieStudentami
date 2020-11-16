@@ -4,6 +4,7 @@ import com.paulinabury.demo.model.Student;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public Student addStudent(Student student) {
         student.setId(getNextId());
+        student.setGraduationDate(getGraduationDate(student.getStartDate()));
         return studentMap.put(student.getId(), student);
     }
 
@@ -68,11 +70,15 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public List<Student> addBatchOfStudents(List<Student> students) {
+        for (Student student : students) {
+            student.setGraduationDate(getGraduationDate(student.getStartDate()));
+        }
         return addListOfStudents(students);
     }
 
     private List<Student> addListOfStudents(List<Student> students) {
         students.forEach(student -> {
+            student.setGraduationDate(getGraduationDate(student.getStartDate()));
             student.setId(getNextId());
             studentMap.put(student.getId(), student);
         });
@@ -82,4 +88,9 @@ public class StudentServiceImp implements StudentService {
     private Long getNextId() {
         return nextId++;
     }
+
+    private LocalDate getGraduationDate(LocalDate startDate) {
+        return startDate.plusYears(5);
+    }
 }
+

@@ -19,6 +19,6 @@ public class Student {
     private String indexNumber;
     private String field;
     private LocalDate startDate;
-    //private LocalDate endDate = startDate.plusYears(5);
+    private LocalDate graduationDate;
 
 }
