@@ -32,6 +32,36 @@ public class StudentController {
         }
     }
 
+    @GetMapping("/index/{index}")
+    public ResponseEntity<?> getStudentByIndex(@PathVariable String index) {
+        List<Student> students = studentService.selectStudentByIndexNumber(index);
+        if (Objects.nonNull(students)) {
+            return ResponseEntity.ok(students);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<?> getStudentsByName(@PathVariable String name) {
+        List<Student> students = studentService.selectStudentByName(name);
+        if (Objects.nonNull(students)) {
+            return ResponseEntity.ok(students);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/field/{field}")
+    public ResponseEntity<?> getStudentsByField(@PathVariable String field) {
+        List<Student> students = studentService.selectStudentByField(field);
+        if (Objects.nonNull(students)) {
+            return ResponseEntity.ok(students);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());

@@ -51,11 +51,26 @@ public class StudentServiceDbImpl implements StudentService {
 
     @Override
     public void updateStudentById(Long id, Student student) {
-        if(studentRepository.existsById(id)) {
+        if (studentRepository.existsById(id)) {
             student.setId(id);
             studentRepository.save(student);
         }
 
+    }
+
+    @Override
+    public List<Student> selectStudentByIndexNumber(String indexNumber) {
+        return studentRepository.selectAllStudentsWithIndexEqualTo(indexNumber);
+    }
+
+    @Override
+    public List<Student> selectStudentByName(String name) {
+        return studentRepository.selectAllStudentsWithNameEqualsTo(name);
+    }
+
+    @Override
+    public List<Student> selectStudentByField(String field) {
+        return studentRepository.selectAllStudentsWithFieldEqualsTo(field);
     }
 
 }

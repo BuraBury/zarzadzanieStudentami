@@ -19,4 +19,10 @@ public interface StudentService {
 
     void updateStudentById(Long id, Student student);
 
+    List<Student> selectStudentByIndexNumber(String indexNumber);
+
+    List<Student> selectStudentByName(String name);
+
+    List<Student> selectStudentByField(String field);
+
 }
