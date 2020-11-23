@@ -48,7 +48,7 @@ public class StudentController {
             log.info("Successfully deleted student by id");
             return ResponseEntity.accepted().build();
         } else {
-            log.info("Not found");
+            log.info("400 Not found");
             return ResponseEntity.badRequest().build();
         }
     }
