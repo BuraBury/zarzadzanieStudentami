@@ -4,21 +4,32 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.context.annotation.Primary;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@Entity(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue
     private Long id;
+    @NotNull
+    @Length(min=2, max=25)
     private String name;
-    private String lastName;
+    @NotNull
+    @Length(min=2, max=25)
+    private String surname;
     private String indexNumber;
     private String field;
     private LocalDate startDate;
-    private LocalDate graduationDate;
-
 }
