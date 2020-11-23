@@ -1,4 +1,4 @@
 # zarzadzanieStudentami
 Project for studies
 
-using Spring
+using Spring and H2 database
