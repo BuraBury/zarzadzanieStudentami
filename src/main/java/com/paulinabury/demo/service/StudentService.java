@@ -13,15 +13,19 @@ public interface StudentService {
 
     boolean deleteStudentById(Long id);
 
+    boolean deleteStudentByIndexNumber(String index);
+
     Student addNewStudent(Student student);
 
     List<Student> addBatchOfStudents(List<Student> students);
 
     void updateStudentById(Long id, Student student);
 
-    List<Student> selectStudentByIndexNumber(String indexNumber);
+    Student selectStudentByIndexNumber(String indexNumber);
 
     List<Student> selectStudentByName(String name);
+
+    List<Student> selectStudentBySurname(String surname);
 
     List<Student> selectStudentByField(String field);
 
