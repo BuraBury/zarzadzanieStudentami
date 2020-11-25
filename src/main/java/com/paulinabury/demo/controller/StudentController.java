@@ -84,7 +84,7 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
-        log.info("Wszyscy studenci odnalezieni");
+        log.info("Wyświetlono wszystkich studentów");
         return ResponseEntity.ok(studentService.getAllStudents());
     }
 
@@ -112,7 +112,7 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<?> addNewStudent(@RequestBody Student student) {
-        log.info("Dodano do bazy");
+        log.info("Dodano do bazy " + student.toString());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(studentService.addNewStudent(student));
     }

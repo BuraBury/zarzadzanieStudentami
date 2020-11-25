@@ -1,5 +1,5 @@
 # Students Management App
-###Project for studies
+Project for studies
 
-####using Spring and H2 database
+using Spring and H2 database
 
