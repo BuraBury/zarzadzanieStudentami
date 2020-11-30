@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,19 +18,18 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "student")
+@Entity (name = "student")
 public class Student {
 
     @Id
     @GeneratedValue
     private Long id;
-    @NotNull
-    @Length(min=2, max=25)
+//    @Length(min=2, max=25)
     private String name;
-    @NotNull
-    @Length(min=2, max=25)
+//    @Length(min=2, max=25)
     private String surname;
     private String indexNumber;
     private String field;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 }

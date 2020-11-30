@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface StudentService {
 
-    Optional<Student> getStudentById(Long id);
+    Student getStudentById(Long id);
 
     List<Student> getAllStudents();
 

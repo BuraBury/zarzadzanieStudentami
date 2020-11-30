@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
+    @Query (value = "select s from student s where s.id= :id")
+    Student selectStudentByIdEqualTo(@Param("id") Long id);
+
     @Query(value = "select s from student s where s.indexNumber= :indexNumber")
     Student selectAllStudentsWithIndexEqualTo(@Param("indexNumber") String indexNumber);
 

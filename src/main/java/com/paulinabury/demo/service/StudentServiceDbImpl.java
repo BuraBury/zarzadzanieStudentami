@@ -25,18 +25,12 @@ public class StudentServiceDbImpl implements StudentService {
 
 
     @Override
-    public Optional<Student> getStudentById(Long id) throws WrongIdException {
-        if (studentRepository.existsById(id)) {
-            return studentRepository.findById(id);
-        } else {
-            throw new WrongIdException("Podano błędne id");
-        }
+    public Student getStudentById(Long id) {
+        return studentRepository.selectStudentByIdEqualTo(id);
     }
 
     @Override
     public List<Student> getAllStudents() {
-        if (studentRepository.findAll().size() == 0)
-            throw new WrongIdException("Brak studentów do wyświetlenia");
         return studentRepository.findAll();
     }
 
