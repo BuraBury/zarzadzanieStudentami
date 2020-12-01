@@ -25,6 +25,11 @@ public class StudentController {
         return "welcome";
     }
 
+    @GetMapping ("/studyPlan")
+    public String planPage(ModelMap modelMap) {
+        return "study-plan";
+    }
+
 
     @GetMapping("/student")
     public String student(ModelMap modelMap) {
@@ -54,7 +59,7 @@ public class StudentController {
             return "student-add";
         }
         studentService.addNewStudent(student);
-        return "succeeded";
+        return "redirect:/student";
     }
 
 

@@ -2,13 +2,15 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Welcome Page</title>
 </head>
-<body style="background-color: #F07675">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!--<body style="background-color: #F07675">-->
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">WSH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +21,7 @@
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" th:href="@{/student}">Meet our students</a>
             <a class="nav-item nav-link" th:href="@{/student/add}">Add new student</a>
+            <a class="nav-item nav-link" th:href="@{/studyPlan}">Plan</a>
             <!--            <a class="nav-item nav-link" href="#">Disabled</a>-->
         </div>
     </div>
