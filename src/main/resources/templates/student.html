@@ -46,11 +46,11 @@
             <th th:text="${student.indexNumber}"></th>
             <th th:text="${student.field}"></th>
             <th th:text="${student.startDate}"></th>
-            <th><form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">
-                <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>
-            </form></th>
             <th><form th:action="@{/student/{id}(id=${student.id})}" method="get">
                 <input class="btn btn-outline-success mb-2" type="submit" value="Update"/>
+            </form></th>
+            <th><form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">
+                <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>
             </form></th>
         </tr>
         </tbody>
