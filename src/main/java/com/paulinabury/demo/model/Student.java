@@ -24,11 +24,13 @@ public class Student {
     @Id
     @GeneratedValue
     private Long id;
-//    @Length(min=2, max=25)
+    @Length(min=2, max=25)
     private String name;
-//    @Length(min=2, max=25)
+    @Length(min=2, max=25)
     private String surname;
+    @Length(min = 5, max = 5)
     private String indexNumber;
+    @Length(min=4, max = 25)
     private String field;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;

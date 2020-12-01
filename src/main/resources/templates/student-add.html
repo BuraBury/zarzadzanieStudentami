@@ -18,35 +18,49 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" th:href="@{/student}">Go back</a>
-            <a class="nav-item nav-link" th:href="@{/student/add}">Add new student</a>
         </div>
     </div>
 </nav>
 
-<form method="post" th:action="@{/student/add}" th:object="${student}">
+<form style="margin: 0px 10px 10px 10px" method="post" th:action="@{/student/add}" th:object="${student}">
     <!--    <h1 th:if="${#fields.hasErrors()}"></h1>-->
     <div class="form-group">
         <label>
             Name:
             <input type="text" th:field="*{name}">
+            <ul th:if="${#fields.hasErrors('name')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('name')}" th:text="${err}">wrong name</li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Last name:
+            Surnname:
             <input type="text" th:field="*{surname}">
+            <ul th:if="${#fields.hasErrors('surname')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('surname')}" th:text="${err}">wrong surname
+                </li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
         <label>
             index:
             <input type="text" th:field="*{indexNumber}">
+            <ul th:if="${#fields.hasErrors('indexNumber')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('indexNumber')}" th:text="${err}">wrong
+                    indexNumber
+                </li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
         <label>
             field:
             <input type="text" th:field="*{field}">
+            <ul th:if="${#fields.hasErrors('field')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('field')}" th:text="${err}">wrong field</li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
@@ -56,10 +70,14 @@
         </label>
     </div>
 
-    <button type="submit" class="btn btn-primary mb-2">Add student</button>
+    <button type="submit" class="btn btn-outline-success mb-2">Add student</button>
 
     <hr>
 </form>
+
+
+
+
 
 </body>
 </html>

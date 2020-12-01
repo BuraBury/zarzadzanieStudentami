@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Welcome Page</title>
 </head>
-<body>
+<body style="background-color: #F07675">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">WSH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -23,14 +23,14 @@
     </div>
 </nav>
 
-<div class="jumbotron">
+<div class="jumbotron" style="margin: 20px 20px 20px 20px">
     <h1 class="display-4">Welcome</h1>
     <h1 class="text-danger" th:text="${schoolName}">Nazwa szkoły</h1>
-    <p class="lead">Projekt końcowy z użyciem Spring boot, Bootstrap, Thymeleaf, MySQL</p>
+    <p class="lead">Aplikacja do zarządzania studentami</p>
     <hr class="my-4">
-    <p>Aplikacja do zarządzania studentami</p>
+    <p>Projekt końcowy z przedmiotu wstęp do programowania z użyciem Spring boot, Bootstrap, Thymeleaf, MySQL</p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" th:href="@{/student}" role="button">View students</a>
+        <a class="btn btn-outline-info btn-lg" th:href="@{/student}" role="button">View students</a>
     </p>
 </div>
 

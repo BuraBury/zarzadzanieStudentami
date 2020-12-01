@@ -5,10 +5,7 @@ import com.paulinabury.demo.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -39,16 +36,6 @@ public class StudentController {
         return "one-student";
     }
 
-    @PostMapping("/student/{id}")
-    public String updateStudent(@Valid @ModelAttribute("student") Student student,
-                                @PathVariable Long id, final Errors errors) {
-        if (errors.hasErrors()) {
-            return "one-student";
-        }
-        studentService.updateStudentById(id, student);
-        return "redirect:/student";
-    }
-
     @GetMapping("/student/add")
     public String showStudentAdd(ModelMap modelMap) {
         modelMap.addAttribute("student", new Student());
@@ -63,6 +50,22 @@ public class StudentController {
         }
         studentService.addNewStudent(student);
         return "succeeded";
+    }
+
+//    @PostMapping("/student/{id}")
+//    public String deleteStudent(@PathVariable Long id) {
+//        studentService.deleteStudentById(id);
+//        return "redirect:/";
+//    }
+
+    @PostMapping("/student/{id}")
+    public String updateStudent(@Valid @ModelAttribute("student") Student student,
+                                @PathVariable Long id, final Errors errors) {
+        if (errors.hasErrors()) {
+            return "one-student";
+        }
+        studentService.updateStudentById(id, student);
+        return "redirect:/student";
     }
 
 }

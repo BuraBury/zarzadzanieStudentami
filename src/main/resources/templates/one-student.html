@@ -27,7 +27,7 @@
     <h1>Student: </h1>
 
     <table class="table">
-        <thead>
+        <thead th:class="thead-dark">
         <tr>
             <th scope="col">id</th>
             <th scope="col">name</th>
@@ -52,32 +52,48 @@
     </table>
 </div>
 
-<h1>Update info: </h1>
+<h1 style="margin-left: 10px">Update info: </h1>
 
-<form class="col-form-label-sm" method="post" th:action="@{/student/{id}(id=${student.id})}"
+<form style="margin-left: 10px" th:class="form-check-inline" method="post"
+      th:action="@{/student/{id}(id=${student.id})}"
       th:object="${student}">
     <div class="form-group">
-        <label>
+        <label style="margin-right: 10px">
             Name:
             <input type="text" th:field="*{name}">
+            <ul th:if="${#fields.hasErrors('name')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('name')}" th:text="${err}">wrong name</li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
-        <label>
-            Last name:
+        <label style="margin-right: 10px">
+            Surname:
             <input type="text" th:field="*{surname}">
+            <ul th:if="${#fields.hasErrors('surname')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('surname')}" th:text="${err}">wrong surname
+                </li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
-        <label>
+        <label style="margin-right: 10px">
             index:
             <input type="text" th:field="*{indexNumber}">
+            <ul th:if="${#fields.hasErrors('indexNumber')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('indexNumber')}" th:text="${err}">wrong
+                    indexNumber
+                </li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
-        <label>
+        <label style="margin-right: 10px">
             field:
             <input type="text" th:field="*{field}">
+            <ul th:if="${#fields.hasErrors('field')}">
+                <li th:class="text-danger" th:each="err: ${#fields.errors('field')}" th:text="${err}">wrong field</li>
+            </ul>
         </label>
     </div>
     <div class="form-group">
@@ -87,8 +103,13 @@
         </label>
     </div>
 
-    <button type="submit" class="btn btn-primary mb-2">Update</button>
-
+    <div style="margin: 0 10px 10px 10px">
+        <button type="submit" class="btn btn-outline-success mb-2">Update</button>
+        <form method="post" th:action="@{/student/delete/{id}}" th:field="*{id}" th:object="${student}">
+<!--            <input type="hidden" th:field="*{id}"/>-->
+            <input type="submit" class="btn btn-outline-danger mb-2" value="Delete"/>
+        </form>
+    </div>
     <hr>
 </form>
 

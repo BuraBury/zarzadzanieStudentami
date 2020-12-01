@@ -25,5 +25,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query(value = "select s from student s where s.surname= :surname")
     List<Student> selectAllStudentsWithSurnameEqualsTo(@Param("surname") String surname);
+//
+//    @Query(value = "delete s from student s where id= :id")
+//    boolean deleteStudentByIdEqualsTo(@Param("id") Long id);
 
 }
