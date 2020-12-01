@@ -52,11 +52,17 @@ public class StudentController {
         return "succeeded";
     }
 
-//    @PostMapping("/student/{id}")
-//    public String deleteStudent(@PathVariable Long id) {
-//        studentService.deleteStudentById(id);
-//        return "redirect:/";
-//    }
+    @PostMapping("/student/delete/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/student/delete/{id}")
+    public String getDeleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
+        return "student";
+    }
 
     @PostMapping("/student/{id}")
     public String updateStudent(@Valid @ModelAttribute("student") Student student,
@@ -67,5 +73,6 @@ public class StudentController {
         studentService.updateStudentById(id, student);
         return "redirect:/student";
     }
+
 
 }
