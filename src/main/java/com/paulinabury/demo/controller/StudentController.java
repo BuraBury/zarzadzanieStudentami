@@ -18,11 +18,13 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+
     @GetMapping
     public String welcomePage(ModelMap modelMap) {
         modelMap.addAttribute("schoolName", "Wyższa Szkoła Handlowa");
         return "welcome";
     }
+
 
     @GetMapping("/student")
     public String student(ModelMap modelMap) {
@@ -30,11 +32,13 @@ public class StudentController {
         return "student";
     }
 
+
     @GetMapping("/student/{id}")
     public String student(ModelMap modelMap, @PathVariable Long id) {
         modelMap.addAttribute("student", studentService.getStudentById(id));
         return "one-student";
     }
+
 
     @GetMapping("/student/add")
     public String showStudentAdd(ModelMap modelMap) {
@@ -42,6 +46,7 @@ public class StudentController {
         modelMap.addAttribute("error-msg", "błąd danych");
         return "student-add";
     }
+
 
     @PostMapping("/student/add")
     public String addStudent(@Valid @ModelAttribute("student") Student student, final Errors error) {
@@ -52,17 +57,19 @@ public class StudentController {
         return "succeeded";
     }
 
+
     @PostMapping("/student/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudentById(id);
-        return "redirect:/";
+        return "redirect:/student";
     }
 
     @GetMapping("/student/delete/{id}")
-    public String getDeleteStudent(@PathVariable Long id) {
-        studentService.deleteStudentById(id);
-        return "student";
+    public String getDelete(@PathVariable Long id) {
+        studentService.getStudentById(id);
+        return "one-student";
     }
+
 
     @PostMapping("/student/{id}")
     public String updateStudent(@Valid @ModelAttribute("student") Student student,

@@ -33,6 +33,8 @@
         <th scope="col">index</th>
         <th scope="col">field</th>
         <th scope="col">start date</th>
+        <th scope="col">action</th>
+        <th scope="col">action</th>
     </tr>
     </thead>
     <div th:each="student : ${studentList}">
@@ -44,10 +46,17 @@
             <th th:text="${student.indexNumber}"></th>
             <th th:text="${student.field}"></th>
             <th th:text="${student.startDate}"></th>
+            <th><form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">
+                <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>
+            </form></th>
+            <th><form th:action="@{/student/{id}(id=${student.id})}" method="get">
+                <input class="btn btn-outline-success mb-2" type="submit" value="Update"/>
+            </form></th>
         </tr>
         </tbody>
     </div>
 </table>
+
 
 </body>
 </html>
