@@ -18,6 +18,12 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" th:href="@{/student/add}">Add new student</a>
+
+            <form method="get" th:action="@{/student/index/{indexNumber}(indexNumber=${studentIndex})}" class="form-inline my-2 my-lg-0">
+                <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search by index..." type="text">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
         </div>
     </div>
 </nav>
@@ -37,6 +43,7 @@
         <th scope="col">action</th>
     </tr>
     </thead>
+
     <div th:each="student : ${studentList}">
         <tbody>
         <tr>
@@ -46,12 +53,16 @@
             <th th:text="${student.indexNumber}"></th>
             <th th:text="${student.field}"></th>
             <th th:text="${student.startDate}"></th>
-            <th><form th:action="@{/student/{id}(id=${student.id})}" method="get">
-                <input class="btn btn-outline-success mb-2" type="submit" value="Update"/>
-            </form></th>
-            <th><form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">
-                <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>
-            </form></th>
+            <th>
+                <form th:action="@{/student/{id}(id=${student.id})}" method="get">
+                    <input class="btn btn-outline-success mb-2" type="submit" value="Update"/>
+                </form>
+            </th>
+            <th>
+                <form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">
+                    <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>
+                </form>
+            </th>
         </tr>
         </tbody>
     </div>

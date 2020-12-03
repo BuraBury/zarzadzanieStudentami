@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query (value = "select s from student s where s.id= :id")
+    @Query(value = "select s from student s where s.id= :id")
     Student selectStudentByIdEqualTo(@Param("id") Long id);
 
     @Query(value = "select s from student s where s.indexNumber= :indexNumber")
@@ -26,8 +26,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query(value = "select s from student s where s.surname= :surname")
     List<Student> selectAllStudentsWithSurnameEqualsTo(@Param("surname") String surname);
 
-
-//    @Query(value = "delete s from student where id= :id")
-//    boolean deleteStudentByIdEqualsTo(@Param("id") Long id);
 
 }

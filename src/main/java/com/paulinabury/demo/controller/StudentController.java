@@ -31,9 +31,16 @@ public class StudentController {
     }
 
 
+//    @GetMapping("/student")
+//    public String student(ModelMap modelMap) {
+//        modelMap.addAttribute("studentList", studentService.getAllStudents());
+//        return "student";
+//    }
+
     @GetMapping("/student")
     public String student(ModelMap modelMap) {
         modelMap.addAttribute("studentList", studentService.getAllStudents());
+        modelMap.addAttribute("studentIndex", "16924");
         return "student";
     }
 
@@ -41,6 +48,13 @@ public class StudentController {
     @GetMapping("/student/{id}")
     public String student(ModelMap modelMap, @PathVariable Long id) {
         modelMap.addAttribute("student", studentService.getStudentById(id));
+        return "one-student";
+    }
+
+
+    @GetMapping("/student/index/{indexNumber}")
+    public String studentByIndex(ModelMap modelMap, @PathVariable String indexNumber) {
+        modelMap.addAttribute("student", studentService.selectStudentByIndexNumber(indexNumber));
         return "one-student";
     }
 
