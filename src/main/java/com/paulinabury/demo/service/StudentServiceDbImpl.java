@@ -103,4 +103,9 @@ public class StudentServiceDbImpl implements StudentService {
         return studentRepository.selectAllStudentsWithFieldEqualsTo(field);
     }
 
+    @Override
+    public List<Student> findByKeyword(String keyword) {
+        return studentRepository.findByKeyword(keyword);
+    }
+
 }

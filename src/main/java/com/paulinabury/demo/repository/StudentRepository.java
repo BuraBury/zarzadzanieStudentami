@@ -26,5 +26,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query(value = "select s from student s where s.surname= :surname")
     List<Student> selectAllStudentsWithSurnameEqualsTo(@Param("surname") String surname);
 
+    @Query(value = "select * from student s where s.index_number like %:keyword% or s.name like %:keyword% or s.surname like %:keyword% or s.field like %:keyword%", nativeQuery = true)
+    List<Student> findByKeyword(@Param("keyword") String keyword);
 
 }

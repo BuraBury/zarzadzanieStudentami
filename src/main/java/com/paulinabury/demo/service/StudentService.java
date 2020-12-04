@@ -29,4 +29,6 @@ public interface StudentService {
 
     List<Student> selectStudentByField(String field);
 
+    public List<Student> findByKeyword(String keyword);
+
 }

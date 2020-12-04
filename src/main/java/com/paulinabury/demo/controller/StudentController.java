@@ -2,6 +2,7 @@ package com.paulinabury.demo.controller;
 
 import com.paulinabury.demo.model.Student;
 import com.paulinabury.demo.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@Slf4j
 public class StudentController {
 
     private final StudentService studentService;
@@ -31,16 +33,14 @@ public class StudentController {
     }
 
 
-//    @GetMapping("/student")
-//    public String student(ModelMap modelMap) {
-//        modelMap.addAttribute("studentList", studentService.getAllStudents());
-//        return "student";
-//    }
-
     @GetMapping("/student")
-    public String student(ModelMap modelMap) {
-        modelMap.addAttribute("studentList", studentService.getAllStudents());
-        modelMap.addAttribute("studentIndex", "16924");
+    public String student(ModelMap modelMap, String keyword) {
+        if(keyword != null) {
+            modelMap.addAttribute("studentList", studentService.findByKeyword(keyword));
+        } else {
+            modelMap.addAttribute("studentList", studentService.getAllStudents());
+        }
+
         return "student";
     }
 
@@ -48,13 +48,6 @@ public class StudentController {
     @GetMapping("/student/{id}")
     public String student(ModelMap modelMap, @PathVariable Long id) {
         modelMap.addAttribute("student", studentService.getStudentById(id));
-        return "one-student";
-    }
-
-
-    @GetMapping("/student/index/{indexNumber}")
-    public String studentByIndex(ModelMap modelMap, @PathVariable String indexNumber) {
-        modelMap.addAttribute("student", studentService.selectStudentByIndexNumber(indexNumber));
         return "one-student";
     }
 
