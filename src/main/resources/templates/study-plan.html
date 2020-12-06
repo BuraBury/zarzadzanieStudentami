@@ -15,11 +15,18 @@
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="flex: none; position: absolute; right: 30px;">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" th:href="@{/student}">Meet our students</a>
             <a class="nav-item nav-link" th:href="@{/student/add}">Add new student</a>
+            <a class="nav-item nav-link" th:href="@{/studyPlan}">Plan</a>
+            <form method="get" th:action="@{/student}" class="form-inline my-2 my-lg-0">
+                <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search..." type="text" id="txtSearch" name="keyword">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <!--            <a class="nav-item nav-link" href="#">Disabled</a>-->
         </div>
     </div>
 </nav>

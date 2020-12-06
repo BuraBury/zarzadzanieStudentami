@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Scope("prototype")
@@ -108,4 +108,17 @@ public class StudentServiceDbImpl implements StudentService {
         return studentRepository.findByKeyword(keyword);
     }
 
+    @Override
+    public File save(List<Student> list) throws IOException {
+        File file = new File("student.txt");
+        FileWriter writer = new FileWriter(file);
+        Writer output = new BufferedWriter(writer);
+        for (Student student : list) {
+            output.write(student.toString() + "\n");
+        }
+        output.close();
+
+        return file;
+
+    }
 }
