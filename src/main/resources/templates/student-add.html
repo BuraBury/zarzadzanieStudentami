@@ -24,15 +24,12 @@
                 <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search..." type="text" id="txtSearch" name="keyword">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-
-            <!--            <a class="nav-item nav-link" href="#">Disabled</a>-->
         </div>
     </div>
 </nav>
 <h1 style="margin: 10px 10px 10px 10px">Add new student</h1>
 
 <form style="margin: 0px 10px 10px 10px" method="post" th:action="@{/student/add}" th:object="${student}">
-    <!--    <h1 th:if="${#fields.hasErrors()}"></h1>-->
     <div class="form-group">
         <label>
             Name:
