@@ -1,3 +1,7 @@
 body {
-    background-image: url("school.png");
+    background-image: url("school_dd.png");
+}
+img{
+    width: 80%;
+    height: 30%;
 }
