@@ -8,23 +8,28 @@
     <title>Student</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">WSH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="flex: none; position: absolute; right: 30px;">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href="@{/student}">Meet our students</a>
             <a class="nav-item nav-link" th:href="@{/student/add}">Add new student</a>
-            <a class="nav-item nav-link" th:href="@{/student}">Go back</a>
+            <a class="nav-item nav-link" th:href="@{/studyPlan}">Plan</a>
+            <form method="get" th:action="@{/student}" class="form-inline my-2 my-lg-0">
+                <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search..." type="text" id="txtSearch" name="keyword">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </div>
 </nav>
 
 <div>
-    <h1>Student: </h1>
+    <h1 style="margin: 10px 10px 10px 10px">Student: </h1>
 
     <table class="table">
         <thead th:class="thead-dark">
@@ -104,12 +109,7 @@
     </div>
 
     <div style="margin: 0 10px 10px 10px">
-        <button type="submit" class="btn btn-outline-success mb-2">Update</button>
-        <!--        <button type="delete" class="btn btn-outline-danger mb-2" th:action="@{/student/{id}(id=${student.id})}">Delete</button>-->
-
-<!--        <form th:action="@{/student/delete/{id}(id=${student.id})}" method="post">-->
-<!--            <input class="btn btn-outline-danger mb-2" type="submit" value="Delete"/>-->
-<!--        </form>-->
+        <button type="submit" class="btn btn-outline-success mb-2">Submit</button>
     </div>
     <hr>
 </form>

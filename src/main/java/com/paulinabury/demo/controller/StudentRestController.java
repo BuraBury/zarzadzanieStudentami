@@ -34,7 +34,7 @@ public class StudentRestController {
         }
     }
 
-    @GetMapping("/index/{index}")
+    @GetMapping("/student/{index}")
     public ResponseEntity<?> getStudentByIndex(@PathVariable String index) {
         Student student = studentService.selectStudentByIndexNumber(index);
         if (Objects.nonNull(student)) {

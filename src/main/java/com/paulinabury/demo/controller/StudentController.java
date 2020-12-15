@@ -2,14 +2,18 @@ package com.paulinabury.demo.controller;
 
 import com.paulinabury.demo.model.Student;
 import com.paulinabury.demo.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
+@Slf4j
 public class StudentController {
 
     private final StudentService studentService;
@@ -25,10 +29,19 @@ public class StudentController {
         return "welcome";
     }
 
+    @GetMapping("/studyPlan")
+    public String planPage() {
+        return "study-plan";
+    }
+
 
     @GetMapping("/student")
-    public String student(ModelMap modelMap) {
-        modelMap.addAttribute("studentList", studentService.getAllStudents());
+    public String student(ModelMap modelMap, String keyword) {
+        if (keyword != null) {
+            modelMap.addAttribute("studentList", studentService.findByKeyword(keyword));
+        } else {
+            modelMap.addAttribute("studentList", studentService.getAllStudents());
+        }
         return "student";
     }
 
@@ -54,7 +67,25 @@ public class StudentController {
             return "student-add";
         }
         studentService.addNewStudent(student);
-        return "succeeded";
+        return "redirect:/student";
+    }
+
+
+    @PostMapping ("student/save")
+    public String save() {
+        List<Student> studentList = studentService.getAllStudents();
+        try {
+            studentService.save(studentList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/student";
+    }
+
+    @GetMapping("student/save")
+    public String showSaveStudents(ModelMap modelMap) {
+        modelMap.addAttribute("studentList", studentService.getAllStudents());
+        return "student-save";
     }
 
 
@@ -78,7 +109,7 @@ public class StudentController {
             return "one-student";
         }
         studentService.updateStudentById(id, student);
-        return "redirect:/student";
+        return "redirect:/student/" + id;
     }
 
 
